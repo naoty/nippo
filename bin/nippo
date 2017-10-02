@@ -1,0 +1,17 @@
+#!/bin/bash
+
+function nippo() {
+  local filepath=${NIPPO_PATH:-"${HOME}/nippo"}
+  if [ ! -d "${filepath}" ]; then
+    mkdir -p "${filepath}"
+  fi
+
+  local filename="${filepath}/$(date +%Y-%m-%d).md"
+  if [ ! -f "${filename}" ]; then
+    touch "${filename}"
+  fi
+
+  open "${filename}"
+}
+
+nippo
