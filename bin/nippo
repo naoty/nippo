@@ -1,5 +1,9 @@
 #!/bin/bash
 
+function version() {
+  echo "0.1.0"
+}
+
 function nippo() {
   local filepath=${NIPPO_PATH:-"${HOME}/nippo"}
   if [ ! -d "${filepath}" ]; then
@@ -13,5 +17,14 @@ function nippo() {
 
   open "${filename}"
 }
+
+for opt in "$@"
+do
+  case "${opt}" in
+    "-v"|"--version")
+      echo "$(version)"
+      exit 0
+  esac
+done
 
 nippo
