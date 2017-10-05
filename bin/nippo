@@ -13,6 +13,11 @@ function nippo() {
   local filename="${filepath}/$(date +%Y-%m-%d).md"
   if [ ! -f "${filename}" ]; then
     touch "${filename}"
+
+    local template_path="${filepath}/NIPPO_TEMPLATE.md"
+    if [ -f "${template_path}" ]; then
+      cat "${template_path}" > "${filename}"
+    fi
   fi
 
   open "${filename}"
