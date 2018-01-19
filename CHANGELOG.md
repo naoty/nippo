@@ -1,6 +1,8 @@
 # Changelog
 
 ## Unreleased
+
+## [0.3.0] - 2017-01-19
 ### Changed
 * Change to make a nippo in year and month directories.
 
