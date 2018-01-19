@@ -5,16 +5,17 @@ function version() {
 }
 
 function nippo() {
-  local filepath=${NIPPO_PATH:-"${HOME}/nippo"}
+  local nippo_path=${NIPPO_PATH:-"${HOME}/nippo"}
+  local filepath="${nippo_path}/$(date +%Y)/$(date +%m)"
   if [ ! -d "${filepath}" ]; then
     mkdir -p "${filepath}"
   fi
 
-  local filename="${filepath}/$(date +%Y-%m-%d).md"
+  local filename="${filepath}/$(date +%d).md"
   if [ ! -f "${filename}" ]; then
     touch "${filename}"
 
-    local template_path="${filepath}/NIPPO_TEMPLATE.md"
+    local template_path="${nippo_path}/NIPPO_TEMPLATE.md"
     if [ -f "${template_path}" ]; then
       cat "${template_path}" > "${filename}"
     fi
